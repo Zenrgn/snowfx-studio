@@ -214,10 +214,55 @@ $('saveImage').addEventListener('click',()=>{if(!img)return;canvas.toBlob(b=>{if
 $('saveVideo').addEventListener('click',()=>{if(!img||recording)return;if(!canvas.captureStream||!window.MediaRecorder){status.textContent='เบราว์เซอร์นี้ยังบันทึกวิดีโอไม่ได้ ลอง Chrome เวอร์ชันล่าสุด';return}const recordCanvas=document.createElement('canvas');const recordScale=Math.min(1,720/canvas.width,1280/canvas.height);recordCanvas.width=Math.max(2,Math.round(canvas.width*recordScale/2)*2);recordCanvas.height=Math.max(2,Math.round(canvas.height*recordScale/2)*2);const recordCtx=recordCanvas.getContext('2d');let recordAnim=0;const drawRecordFrame=()=>{if(!recording)return;recordCtx.drawImage(canvas,0,0,recordCanvas.width,recordCanvas.height);recordAnim=requestAnimationFrame(drawRecordFrame)};recording=true;drawRecordFrame();const stream=recordCanvas.captureStream(20),types=['video/webm;codecs=vp8','video/webm;codecs=vp9','video/webm'];const mime=types.find(x=>MediaRecorder.isTypeSupported(x))||'';let rec;try{rec=new MediaRecorder(stream,mime?{mimeType:mime,videoBitsPerSecond:1400000}:{videoBitsPerSecond:1400000})}catch(e){status.textContent='เริ่มบันทึกไม่ได้บนเบราว์เซอร์นี้';stream.getTracks().forEach(t=>t.stop());return}const chunks=[];rec.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};rec.onerror=()=>{stream.getTracks().forEach(t=>t.stop());cancelAnimationFrame(recordAnim);recording=false;$('saveVideo').disabled=false;status.textContent='เกิดข้อผิดพลาดขณะบันทึกวิดีโอ'};rec.onstop=async()=>{const b=new Blob(chunks,{type:rec.mimeType||'video/webm'});lastWebm=b;convertedMp4=null;stream.getTracks().forEach(t=>t.stop());recording=false;$('saveVideo').disabled=false;$('saveVideo').textContent='บันทึกวิดีโอ 15 วิ';$('saveMp4').disabled=false;logAction('video','recorded 15s');status.textContent='อัดเสร็จแล้ว — กำลังแปลง MP4 ในเบราว์เซอร์…';try{await convertToMp4(b,true)}catch(e){console.error(e);status.textContent='ส่งไปแปลงไม่สำเร็จ: '+(e?.message||String(e))+' — ตรวจอินเทอร์เน็ตและลองกด “แปลงเป็น MP4” อีกครั้ง'}};recording=true;$('saveVideo').disabled=true;$('saveVideo').textContent='กำลังบันทึก…';status.textContent='กำลังบันทึก 15 วินาที กรุณาอยู่หน้าเว็บและอย่าดับหน้าจอ';rec.start(250);setTimeout(()=>{if(rec.state==='recording')rec.stop()},15000)});
 async function fetchFirst(urls){let errors=[];for(const url of urls){try{status.textContent='กำลังดาวน์โหลดไฟล์ตัวแปลง…';const r=await fetch(url,{mode:'cors',cache:'force-cache'});if(!r.ok)throw new Error('HTTP '+r.status);return await r.blob()}catch(e){errors.push(url+' — '+(e.message||e))}}throw new Error(errors.join(' | '))}
 async function blobUrlFrom(urls,type){const b=await fetchFirst(urls);return URL.createObjectURL(new Blob([b],{type}))}
-async function getFFmpeg(){if(ffmpegInstance)return ffmpegInstance;if(ffmpegLoading)return ffmpegLoading;ffmpegLoading=(async()=>{status.textContent='กำลังโหลดตัวแปลง MP4 (ครั้งแรกอาจใช้เวลาสักครู่)…';let importError;let FFmpegClass;for(const src of ['https://esm.sh/@ffmpeg/ffmpeg@0.12.15','https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.15/dist/esm/index.js','https://unpkg.com/@ffmpeg/ffmpeg@0.12.15/dist/esm/index.js']){try{const mod=await import(src);FFmpegClass=mod.FFmpeg;if(FFmpegClass)break;throw new Error('ไม่พบ FFmpeg class')}catch(e){importError=e}}if(!FFmpegClass)throw new Error('โหลดไลบรารี FFmpeg ไม่สำเร็จ: '+(importError?.message||'CDN ใช้งานไม่ได้'));
-const ff=new FFmpegClass();status.textContent='กำลังเริ่มระบบ FFmpeg…';ff.on('log',({message})=>{if(message&&/error/i.test(message))console.warn('[FFmpeg]',message)});ff.on('progress',({progress})=>{if(Number.isFinite(progress))status.textContent='กำลังแปลง MP4… '+Math.max(0,Math.min(100,Math.round(progress*100)))+'% — อย่าปิดหน้านี้'});
-const base='@ffmpeg/core@0.12.10/dist/umd/ffmpeg-core';const roots=['https://cdn.jsdelivr.net/npm/'+base,'https://unpkg.com/'+base];let coreURL,wasmURL;try{coreURL=await blobUrlFrom(roots.map(x=>x+'.js'),'text/javascript');wasmURL=await blobUrlFrom(roots.map(x=>x+'.wasm'),'application/wasm')}catch(e){throw new Error('โหลด FFmpeg core/wasm ไม่สำเร็จจาก CDN สำรอง: '+e.message)}
-let workerURL=null,workerConstURL=null,workerErrorsURL=null;try{const workerRoot='https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.15/dist/esm/';const [workerRes,constRes,errorsRes]=await Promise.all([fetch(workerRoot+'worker.js',{mode:'cors',cache:'force-cache'}),fetch(workerRoot+'const.js',{mode:'cors',cache:'force-cache'}),fetch(workerRoot+'errors.js',{mode:'cors',cache:'force-cache'})]);if(!workerRes.ok||!constRes.ok||!errorsRes.ok)throw new Error('โหลดไฟล์ Worker ไม่สำเร็จ');const constText=await constRes.text(),errorsText=await errorsRes.text();workerConstURL=URL.createObjectURL(new Blob([constText],{type:'text/javascript'}));workerErrorsURL=URL.createObjectURL(new Blob([errorsText],{type:'text/javascript'}));let workerText=await workerRes.text();workerText=workerText.replaceAll('./const.js',workerConstURL).replaceAll('./errors.js',workerErrorsURL);workerURL=URL.createObjectURL(new Blob([workerText],{type:'text/javascript'}));await ff.load({coreURL,wasmURL,classWorkerURL:workerURL})}finally{URL.revokeObjectURL(coreURL);URL.revokeObjectURL(wasmURL)}ffmpegInstance=ff;ffmpegWorkerURLs=[workerURL,workerConstURL,workerErrorsURL].filter(Boolean);return ff})();try{return await ffmpegLoading}catch(e){ffmpegLoading=null;throw e}}
+async function getFFmpeg(){
+ if(ffmpegInstance)return ffmpegInstance;
+ if(ffmpegLoading)return ffmpegLoading;
+ ffmpegLoading=(async()=>{
+  status.textContent='กำลังโหลดตัวแปลง MP4…';
+  let importError,FFmpegClass;
+  for(const src of ['https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.15/dist/esm/index.js','https://unpkg.com/@ffmpeg/ffmpeg@0.12.15/dist/esm/index.js','https://esm.sh/@ffmpeg/ffmpeg@0.12.15']){
+   try{const mod=await import(src);FFmpegClass=mod.FFmpeg;if(FFmpegClass)break;throw new Error('ไม่พบ FFmpeg class')}catch(e){importError=e}
+  }
+  if(!FFmpegClass)throw new Error('โหลดไลบรารี FFmpeg ไม่สำเร็จ: '+(importError?.message||'CDN ใช้งานไม่ได้'));
+  const ff=new FFmpegClass();
+  status.textContent='กำลังเริ่มระบบ FFmpeg…';
+  ff.on('log',({message})=>{if(message&&/error/i.test(message))console.warn('[FFmpeg]',message)});
+  ff.on('progress',({progress})=>{if(Number.isFinite(progress))status.textContent='กำลังแปลง MP4… '+Math.max(0,Math.min(100,Math.round(progress*100)))+'% — อย่าปิดหน้านี้'});
+  // Use official ESM core files by direct HTTPS URL. Avoid converting the core into blob: URLs,
+  // because some mobile browsers cannot import a blob module from the FFmpeg worker.
+  const versions=[
+   'https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.10/dist/esm',
+   'https://unpkg.com/@ffmpeg/core@0.12.10/dist/esm'
+  ];
+  let coreBase=null,loadError=null;
+  for(const base of versions){
+   try{
+    status.textContent='กำลังตรวจสอบไฟล์ FFmpeg core…';
+    const [js,wasm]=await Promise.all([fetch(base+'/ffmpeg-core.js',{mode:'cors',cache:'no-cache'}),fetch(base+'/ffmpeg-core.wasm',{mode:'cors',cache:'no-cache'})]);
+    if(!js.ok||!wasm.ok)throw new Error('HTTP '+(!js.ok?js.status:wasm.status));
+    coreBase=base;break;
+   }catch(e){loadError=e;console.warn('FFmpeg CDN unavailable:',base,e)}
+  }
+  if(!coreBase)throw new Error('ดาวน์โหลด FFmpeg core ไม่สำเร็จจาก CDN สำรอง: '+(loadError?.message||'ตรวจเครือข่ายหรือ CDN'));
+  // Keep the package worker and its relative modules on a Blob URL, but leave core/WASM URLs
+  // as normal HTTPS URLs so dynamic import and WebAssembly fetch work across mobile browsers.
+  let workerURL=null,workerConstURL=null,workerErrorsURL=null;
+  try{
+   const workerRoot='https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.15/dist/esm/';
+   const [workerRes,constRes,errorsRes]=await Promise.all([fetch(workerRoot+'worker.js',{mode:'cors',cache:'no-cache'}),fetch(workerRoot+'const.js',{mode:'cors',cache:'no-cache'}),fetch(workerRoot+'errors.js',{mode:'cors',cache:'no-cache'})]);
+   if(!workerRes.ok||!constRes.ok||!errorsRes.ok)throw new Error('โหลดไฟล์ Worker ไม่สำเร็จ');
+   const constText=await constRes.text(),errorsText=await errorsRes.text();
+   workerConstURL=URL.createObjectURL(new Blob([constText],{type:'text/javascript'}));
+   workerErrorsURL=URL.createObjectURL(new Blob([errorsText],{type:'text/javascript'}));
+   let workerText=await workerRes.text();
+   workerText=workerText.replaceAll('./const.js',workerConstURL).replaceAll('./errors.js',workerErrorsURL);
+   workerURL=URL.createObjectURL(new Blob([workerText],{type:'text/javascript'}));
+   await ff.load({coreURL:coreBase+'/ffmpeg-core.js',wasmURL:coreBase+'/ffmpeg-core.wasm',classWorkerURL:workerURL});
+  }catch(e){[workerURL,workerConstURL,workerErrorsURL].filter(Boolean).forEach(u=>URL.revokeObjectURL(u));throw new Error('เริ่ม FFmpeg worker/core ไม่สำเร็จ: '+(e?.message||String(e)))}
+  ffmpegInstance=ff;ffmpegWorkerURLs=[workerURL,workerConstURL,workerErrorsURL].filter(Boolean);return ff;
+ })();
+ try{return await ffmpegLoading}catch(e){ffmpegLoading=null;throw e}
+}
 
 async function convertToMp4(sourceBlob,automatic=false){if(!sourceBlob)throw new Error('ไม่พบวิดีโอสำหรับแปลง');const btn=$('saveMp4'),old=btn.textContent;btn.disabled=true;btn.textContent='กำลังแปลง MP4…';try{status.textContent='กำลังเตรียม FFmpeg ในเบราว์เซอร์…';const ff=await getFFmpeg();status.textContent='กำลังเตรียมวิดีโอสำหรับแปลง…';const inputName='snowfx-input.webm',outputName='snowfx-output.mp4';try{await ff.deleteFile(inputName)}catch{}try{await ff.deleteFile(outputName)}catch{}await ff.writeFile(inputName,new Uint8Array(await sourceBlob.arrayBuffer()));status.textContent='กำลังแปลงเป็น MP4 บนอุปกรณ์นี้… อย่าปิดหน้าเว็บ';const result=await ff.exec(['-i',inputName,'-c:v','libx264','-preset','ultrafast','-crf','25','-threads','1','-pix_fmt','yuv420p','-movflags','+faststart','-an',outputName],-1);if(result!==0)throw new Error('FFmpeg แปลงวิดีโอไม่สำเร็จ (รหัส '+result+')');const data=await ff.readFile(outputName);convertedMp4=new Blob([data],{type:'video/mp4'});if(!convertedMp4.size)throw new Error('ไฟล์ MP4 ว่างเปล่า');downloadBlob(convertedMp4,'snowfx-cinematic.mp4');logAction('mp4','snowfx-cinematic.mp4');status.textContent='แปลง MP4 ในเบราว์เซอร์สำเร็จ ✓ กำลังดาวน์โหลดไฟล์';try{await ff.deleteFile(inputName);await ff.deleteFile(outputName)}catch{}return true}catch(e){console.error(e);const message=e?.message||String(e);if(!automatic)status.textContent='แปลง MP4 ไม่สำเร็จ: '+message+' — ตรวจอินเทอร์เน็ตและพื้นที่ว่าง แล้วลองใหม่';throw new Error(message)}finally{btn.disabled=!lastWebm;btn.textContent=old}}$('saveMp4').addEventListener('click',async()=>{if(!lastWebm){status.textContent='กรุณาบันทึกวิดีโอก่อน';return}try{await convertToMp4(lastWebm,false)}catch(e){status.textContent='แปลง MP4 ไม่สำเร็จ: '+(e?.message||String(e))+' — ตรวจอินเทอร์เน็ตและพื้นที่ว่าง แล้วลองใหม่'}});
 function saveHistory(){history=history.slice(0,100);DB.set('history',history);renderHistory()}
