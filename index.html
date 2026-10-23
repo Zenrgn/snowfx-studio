@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08090b">
+<meta name="description" content="SNOWFX STUDIO — premium glass cinematic snow and sparkle photo studio.">
+<title>SNOWFX STUDIO — Cinematic Photo Effects</title>
+<style>
+:root{color-scheme:dark;--bg:#08090b;--panel:#111317;--line:#282b31;--muted:#a4a8b1;--white:#f7f7f5}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#25282d 0%,#0b0c0f 43%,var(--bg) 72%);color:var(--white);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}button,input,select{font:inherit}button{cursor:pointer}.wrap{width:min(1120px,100% - 32px);margin:auto}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 0;border-bottom:1px solid #ffffff12}.brand{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:850;letter-spacing:.18em}.brandmark{width:30px;height:30px;border:1px solid #f5f5f5aa;border-radius:50%;display:grid;place-items:center}.navlinks{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.navbtn{border:1px solid #ffffff20;background:#ffffff07;color:#ddd;border-radius:999px;padding:8px 11px;font-size:11px}.navbtn.active{background:#f2f3f4;color:#111}.hero{text-align:center;padding:48px 0 28px}.eyebrow{font-size:11px;letter-spacing:.28em;color:#bfc2c8;text-transform:uppercase}h1{font-size:clamp(36px,8vw,76px);letter-spacing:-.065em;line-height:.98;margin:17px 0 14px;font-weight:850}h1 span{color:#8e939c}.sub{max-width:590px;margin:0 auto;color:#aeb2ba;line-height:1.7;font-size:14px}.featurepage{display:none;padding:10px 0 55px}.featurepage.active{display:block}.layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(290px,.9fr);gap:16px;padding:12px 0 54px}.panel{background:linear-gradient(145deg,#15171c,#0f1013);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 20px 60px #0004}.panelhead{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid #ffffff12}.panelhead strong{font-size:12px;letter-spacing:.16em}.panelhead small{color:#8f949d;font-size:11px}.previewbox{padding:14px}.preview{min-height:300px;max-height:66vh;aspect-ratio:9/14;background:repeating-conic-gradient(#16181c 0% 25%,#111317 0% 50%) 50%/22px 22px;border:1px solid #ffffff12;border-radius:13px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}canvas{display:block;max-width:100%;max-height:66vh;width:auto;height:auto;object-fit:contain}.empty{text-align:center;padding:25px;color:#a5a9b2}.empty .flake{font-size:38px;display:block;margin-bottom:12px;color:#fff}.empty b{display:block;color:#e7e8eb;font-size:14px;margin-bottom:5px}.empty span{font-size:12px;line-height:1.6}.previewfoot{display:flex;justify-content:space-between;gap:10px;padding:11px 2px 0;color:#8e939c;font-size:11px}.controls{padding:18px}.sectionlabel{font-size:11px;letter-spacing:.17em;color:#a8adb6;margin:0 0 12px;text-transform:uppercase}.upload{display:flex;align-items:center;justify-content:center;text-align:center;gap:10px;width:100%;min-height:48px;border:1px dashed #666b75;border-radius:12px;background:#ffffff06;color:#f7f7f5;font-weight:700;font-size:13px}.upload:hover{background:#ffffff0b;border-color:#c7cbd3}#file{display:none}.control{margin:22px 0}.labelrow{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;margin-bottom:10px}.labelrow output{color:#e6e8ec;font-variant-numeric:tabular-nums}input[type=range]{width:100%;accent-color:#f3f4f6;height:22px}.hint{font-size:11px;color:#8d929b;line-height:1.6;margin-top:5px}.toggleline{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #ffffff10;font-size:13px}.toggle{width:42px;height:24px;border-radius:99px;border:1px solid #5a5e66;background:#292c32;position:relative;flex-shrink:0}.toggle:after{content:"";position:absolute;width:16px;height:16px;border-radius:50%;background:#dfe1e5;top:3px;left:3px;transition:transform .18s}.toggle[aria-pressed=true]{background:#e8e9ec}.toggle[aria-pressed=true]:after{background:#111;transform:translateX(18px)}.btnrow{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:20px}.btn{border-radius:12px;min-height:46px;padding:11px 12px;border:1px solid #3b3e45;background:#1c1f25;color:#f6f6f4;font-size:12px;font-weight:750}.btn.primary{background:#f2f3f4;color:#0b0c0e;border-color:#f2f3f4}.btn:disabled{opacity:.35;cursor:not-allowed}.status{font-size:11px;line-height:1.55;color:#bfc3cb;background:#ffffff06;border:1px solid #ffffff0e;padding:11px;border-radius:10px;margin-top:12px;min-height:40px;overflow-wrap:anywhere}.note{font-size:11px;color:#8f949c;line-height:1.65;margin-top:12px}.footer{border-top:1px solid #ffffff12;padding:20px 0 30px;color:#777d87;font-size:11px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.featurehead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:16px 0}.featurehead h2{margin:0;font-size:24px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}.savedcard{background:#111317;border:1px solid #292c32;border-radius:15px;padding:12px;min-width:0}.savedcard img{width:100%;aspect-ratio:3/4;object-fit:contain;background:#08090b;border-radius:9px}.savedcard h3{font-size:13px;margin:10px 0 5px;overflow-wrap:anywhere}.savedcard p{font-size:11px;color:#9ca2ac;overflow-wrap:anywhere}.cardactions{display:flex;gap:6px;flex-wrap:wrap}.cardactions button,.smallbtn{border:1px solid #393d45;background:#202329;color:#eee;padding:8px 10px;border-radius:9px;font-size:11px}.emptylist{padding:28px;border:1px dashed #393d45;border-radius:14px;color:#a5a9b2;text-align:center}.modalback{position:fixed;inset:0;background:#000b;z-index:20;display:none;align-items:center;justify-content:center;padding:16px}.modalback.open{display:flex}.modal{width:min(560px,100%);max-height:85vh;overflow:auto;background:#111317;border:1px solid #414650;border-radius:18px;padding:20px;box-shadow:0 20px 80px #0009}.modal h2{margin:0 0 14px;font-size:21px}.modal label{display:block;color:#b6bbc4;font-size:12px;margin:12px 0 6px}.modal input,.modal select{width:100%;background:#08090b;color:#fff;border:1px solid #3b3f47;border-radius:9px;padding:11px}.modalactions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}.muted{color:#9ba1ab;font-size:12px;line-height:1.6}.adminfloat{position:fixed;right:14px;bottom:14px;z-index:10;border:1px solid #656b75;background:#15171c;color:#fff;border-radius:999px;padding:11px 15px;font-size:11px;box-shadow:0 5px 25px #0008}.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.statbox{border:1px solid #292c32;background:#0b0c0f;border-radius:12px;padding:12px}.statbox strong{display:block;font-size:22px}.statbox span{font-size:10px;color:#9ca2ac}.notice{font-size:11px;color:#e5c58b;line-height:1.6;background:#3b2d151f;border:1px solid #6e552d;border-radius:10px;padding:10px;margin-top:12px}
+@media(max-width:760px){.topbar{align-items:flex-start;gap:12px;flex-wrap:wrap}.navlinks{justify-content:flex-start}.statgrid{grid-template-columns:1fr 1fr}.layout{grid-template-columns:1fr}.hero{padding:38px 0 24px}.preview{min-height:260px;max-height:58vh}canvas{max-height:58vh}.panelhead{padding:14px 15px}.controls{padding:16px}.wrap{width:min(100% - 22px,600px)}}
+
+/* === SNOWFX GLASS PREMIUM UI === */
+:root{
+  color-scheme:dark;
+  --bg:#050b15;--panel:rgba(13,25,43,.70);--line:rgba(117,190,255,.20);
+  --muted:#9fb8d2;--white:#f2f8ff;--ice:#77d5ff;--blue:#528cff;
+}
+body{
+  background:
+    radial-gradient(ellipse at 12% 0%,rgba(40,132,255,.22),transparent 36%),
+    radial-gradient(ellipse at 92% 18%,rgba(61,205,255,.13),transparent 30%),
+    linear-gradient(145deg,#050914 0%,#081426 48%,#040811 100%);
+  color:var(--white);
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:linear-gradient(120deg,transparent 20%,rgba(100,190,255,.025) 50%,transparent 78%);
+}
+.topbar{border-bottom-color:rgba(128,195,255,.17);backdrop-filter:blur(18px)}
+.brand{letter-spacing:.15em}
+.brandmark{
+  border-color:#81d8ff88;color:#a9e7ff;
+  background:linear-gradient(145deg,#73d9ff24,#477eff12);
+  box-shadow:0 0 24px #3d9dff20,inset 0 0 14px #72cfff13;
+}
+.navbtn{
+  border-color:#8acbff28;background:#ffffff07;color:#c9def3;
+  backdrop-filter:blur(16px);transition:.2s ease;
+}
+.navbtn:hover,.navbtn.active{
+  color:#f7fcff;border-color:#75d8ff88;
+  background:linear-gradient(120deg,#4d9dff38,#5ee5ff20);
+  box-shadow:0 0 22px #4eafff18,inset 0 1px #ffffff18;
+}
+.hero{padding-top:52px}
+.eyebrow{color:#86d9ff;letter-spacing:.3em}
+h1 span{
+  color:transparent;
+  background:linear-gradient(100deg,#b9efff 0%,#62b9ff 42%,#a5b9ff 75%,#e0f7ff 100%);
+  -webkit-background-clip:text;background-clip:text;
+  filter:drop-shadow(0 0 22px #4abaff27);
+}
+.sub{color:#aec3db}
+.panel,.savedcard,.modal{
+  background:linear-gradient(145deg,rgba(20,39,64,.78),rgba(7,15,29,.78));
+  border:1px solid rgba(122,195,255,.20);
+  box-shadow:0 24px 70px #0005,inset 0 1px rgba(255,255,255,.055);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+}
+.panel{border-radius:22px}
+.panelhead{border-bottom-color:#a8dfff16;background:linear-gradient(90deg,#79caff08,transparent)}
+.panelhead strong{color:#e1f4ff;letter-spacing:.13em}
+.panelhead small,.previewfoot{color:#8eabc8}
+.preview{
+  border-color:#7fcaff25;
+  background:repeating-conic-gradient(#14243a 0% 25%,#0c192b 0% 50%) 50%/22px 22px;
+  box-shadow:inset 0 0 35px #0005;
+}
+.empty .flake{color:#91e3ff;text-shadow:0 0 25px #59bfff70}
+.empty b{color:#e8f7ff;letter-spacing:.06em}
+.empty span{color:#9fb8d2}
+.sectionlabel{color:#91cbed}
+.upload{
+  border-color:#65c9ff62;background:linear-gradient(120deg,#4a9fff12,#64e1ff09);
+  color:#e9f8ff;transition:.2s ease;
+}
+.upload:hover{border-color:#86dcff;background:#60c5ff17;box-shadow:0 0 25px #45aaff14}
+input[type=range]{accent-color:#66d4ff}
+.toggleline{border-bottom-color:#8bcfff18}
+.toggle{border-color:#6da8d65c;background:#10243b}
+.toggle:after{background:#ccecff}
+.toggle[aria-pressed=true]{
+  background:linear-gradient(110deg,#267be8,#42cfff);border-color:#6ad8ff;
+  box-shadow:0 0 17px #42bfff38;
+}
+.toggle[aria-pressed=true]:after{background:#061221}
+.btn,.cardactions button,.smallbtn{
+  border-color:#83bfff35;
+  background:linear-gradient(145deg,#1a304bce,#0b192bdf);
+  color:#e4f5ff;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease;
+}
+.btn:hover,.cardactions button:hover,.smallbtn:hover{border-color:#74d7ff;box-shadow:0 7px 24px #2a8dff17}
+.btn:active,.cardactions button:active,.smallbtn:active{transform:scale(.985)}
+.btn.primary{
+  color:#041323;border-color:#9ce8ff;
+  background:linear-gradient(110deg,#a3eaff 0%,#69c8ff 48%,#9cbcff 100%);
+  box-shadow:0 8px 26px #3aaeff20,inset 0 1px #ffffffb5;
+}
+.status{
+  color:#cce8ff;background:linear-gradient(110deg,#3b9cff12,#6de9ff08);
+  border-color:#74cfff25;
+}
+.note,.hint{color:#8faac7}
+.footer{border-top-color:#83caff1c;color:#7894b4}
+.savedcard{border-radius:17px}
+.savedcard img{border:1px solid #85cfff1c}
+.modalback{background:rgba(1,5,13,.78);backdrop-filter:blur(9px)}
+.modal{border-radius:22px}
+.modal input,.modal select,#profileName,#language{
+  background:rgba(3,11,23,.8)!important;border-color:#7abfff38!important;
+}
+.adminfloat{
+  border-color:#83d8ff58;
+  background:linear-gradient(120deg,rgba(26,61,94,.94),rgba(8,22,40,.96));
+  color:#e8f8ff;box-shadow:0 8px 30px #0007,0 0 22px #318bff18;
+  backdrop-filter:blur(18px);
+}
+.statbox{background:rgba(5,15,29,.7);border-color:#78bfff2b}
+.notice{background:#382b171c;border-color:#8b713e66}
+.live-stats{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;
+  margin:2px auto 24px;max-width:790px;
+}
+.live-stat{
+  position:relative;overflow:hidden;padding:17px 19px;border-radius:18px;
+  border:1px solid rgba(115,197,255,.24);
+  background:linear-gradient(135deg,rgba(22,47,76,.76),rgba(8,18,34,.72));
+  box-shadow:0 18px 45px #0003,inset 0 1px #ffffff0b;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+}
+.live-stat:after{
+  content:"";position:absolute;width:120px;height:120px;right:-45px;top:-65px;
+  background:#55bfff18;filter:blur(20px);border-radius:50%;pointer-events:none;
+}
+.live-stat-head{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#a8c6e3;font-size:11px;letter-spacing:.07em}
+.live-stat-value{font-size:clamp(26px,5vw,35px);font-weight:850;letter-spacing:-.04em;color:#e8f8ff;margin:7px 0 2px;font-variant-numeric:tabular-nums}
+.live-stat-value em{font-style:normal;color:#74d8ff}
+.live-stat-foot{font-size:10px;color:#819dbb;line-height:1.5}
+.live-pill{display:inline-flex;align-items:center;gap:5px;border:1px solid #6bd9ff45;background:#4bbcff12;color:#9ee8ff;border-radius:999px;padding:4px 7px;font-size:9px;letter-spacing:.08em;white-space:nowrap}
+.live-dot{width:6px;height:6px;background:#65f2c0;border-radius:50%;box-shadow:0 0 9px #65f2c0;display:inline-block}
+.demo-banner{
+  max-width:790px;margin:-10px auto 18px;padding:9px 12px;border-radius:11px;
+  border:1px solid #78bfff20;background:#5eaeff08;color:#8eabc8;
+  font-size:10px;line-height:1.5;text-align:center;
+}
+@media(max-width:760px){
+  .hero{padding-top:34px}
+  .live-stats{gap:8px;margin-bottom:18px}
+  .live-stat{padding:13px 12px;border-radius:15px}
+  .live-stat-head{font-size:9px;align-items:flex-start}
+  .live-stat-foot{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="topbar"><div class="brand"><span class="brandmark">✳</span> SNOWFX <span style="font-weight:400;color:#969ba4">STUDIO</span></div><nav class="navlinks" aria-label="เมนูหลัก"><button class="navbtn active" data-page="studio">Studio</button><button class="navbtn" data-page="projects">โปรเจกต์</button><button class="navbtn" data-page="history">ประวัติ</button><button class="navbtn" data-page="profile">โปรไฟล์</button></nav></header>
+<section class="hero"><div class="eyebrow">CINEMATIC PHOTO EFFECTS</div><h1>Make it <span>snow.</span></h1><p class="sub">เปลี่ยนรูปของคุณให้กลายเป็นฉากหิมะตกแบบ Cinematic พร้อมประกายละเอียด ๆ ดูตัวอย่างได้ทันที และประมวลผลในเบราว์เซอร์ของคุณ</p></section>
+
+<section class="live-stats" aria-label="สถิติผู้เข้าชมตัวอย่าง">
+  <article class="live-stat">
+    <div class="live-stat-head"><span>ONLINE NOW</span><span class="live-pill"><i class="live-dot"></i> DEMO LIVE</span></div>
+    <div class="live-stat-value"><em id="onlineCount">8</em> <span style="font-size:12px;color:#8eabc8;font-weight:600">คน</span></div>
+    <div class="live-stat-foot">ตัวเลขจำลองสำหรับทดสอบหน้าตาและการอัปเดต</div>
+  </article>
+  <article class="live-stat">
+    <div class="live-stat-head"><span>VISITORS · LAST 24H</span><span class="live-pill">24H DEMO</span></div>
+    <div class="live-stat-value"><em id="visitorCount">186</em> <span style="font-size:12px;color:#8eabc8;font-weight:600">ครั้ง</span></div>
+    <div class="live-stat-foot">ยอดจำลอง ไม่ใช่จำนวนผู้เข้าชมจริง</div>
+  </article>
+</section>
+<div class="demo-banner">TEST MODE · ระบบสถิตินี้เป็นข้อมูลจำลองเท่านั้น ยังไม่ได้เชื่อม Firebase หรือเก็บข้อมูลผู้เข้าชมจริง</div>
+
+<section id="page-studio" class="featurepage active"><main class="layout">
+<section class="panel"><div class="panelhead"><strong>01 / LIVE PREVIEW</strong><small>REAL-TIME CANVAS</small></div><div class="previewbox"><div class="preview" id="preview"><div class="empty" id="empty"><span class="flake">✳</span><b>YOUR IMAGE, YOUR ATMOSPHERE</b><span>เลือกรูปเพื่อเริ่มสร้างเอฟเฟกต์<br>ภาพต้นฉบับจะไม่ถูกแก้ไข</span></div><canvas id="canvas" hidden></canvas></div><div class="previewfoot"><span>LIVE RENDER</span><span id="fps">WAITING FOR IMAGE</span></div></div></section>
+<aside class="panel"><div class="panelhead"><strong>02 / EFFECT CONTROLS</strong><small>ADJUST YOUR LOOK</small></div><div class="controls">
+<p class="sectionlabel">Image source</p><label class="upload" for="file">＋ &nbsp; เลือกรูปจากอุปกรณ์</label><input id="file" type="file" accept="image/*"><div class="hint">รองรับ JPG, PNG และ WEBP · รูปจะอยู่ในเครื่องคุณ ไม่ได้อัปโหลดไปเซิร์ฟเวอร์</div>
+<div class="control"><div class="labelrow"><label for="count">Snow density</label><output id="countOut">55 flakes</output></div><input id="count" type="range" min="15" max="100" value="55"><div class="hint">จำนวนเกล็ดหิมะบนภาพ</div></div>
+<div class="control"><div class="labelrow"><label for="speed">Fall speed</label><output id="speedOut">1.0×</output></div><input id="speed" type="range" min="3" max="18" value="10"><div class="hint">ปรับความเร็วการตก</div></div>
+<div class="control"><div class="labelrow"><label for="size">Snow size</label><output id="sizeOut">Medium</output></div><input id="size" type="range" min="1" max="10" value="5"><div class="hint">ขนาดเกล็ดหิมะ</div></div>
+<div class="toggleline"><span>Twinkle sparkles</span><button id="sparkleToggle" class="toggle" aria-pressed="true" aria-label="เปิดหรือปิดประกาย"></button></div><div class="toggleline"><span>Gentle snow glow</span><button id="glowToggle" class="toggle" aria-pressed="false" aria-label="เปิดหรือปิดแสงหิมะ"></button></div>
+<div class="btnrow"><button id="saveImage" class="btn" disabled>บันทึกรูป PNG</button><button id="saveProject" class="btn" disabled>บันทึกโปรเจกต์</button><button id="saveVideo" class="btn primary" disabled>บันทึกวิดีโอ 15 วิ</button><button id="saveMp4" class="btn" disabled>แปลงเป็น MP4</button></div><div class="status" id="status" role="status">เลือกรูปเพื่อเริ่มต้น</div><p class="note">โหมด Termux: หลังอัดครบ 15 วินาที เว็บจะส่งวิดีโอไปแปลง MP4 บน Termux ในมือถือเครื่องนี้ แล้วดาวน์โหลด MP4 กลับมาอัตโนมัติ ต้องเปิดเซิร์ฟเวอร์ Termux ไว้ก่อน</p>
+</div></aside></main></section>
+<section id="page-projects" class="featurepage"><div class="featurehead"><h2>โปรเจกต์ที่บันทึกไว้</h2><button class="smallbtn" id="refreshProjects">รีเฟรช</button></div><p class="muted">โปรเจกต์จะถูกเก็บไว้ในเบราว์เซอร์และอุปกรณ์นี้เท่านั้น</p><div id="projectsList" class="cards"></div></section>
+<section id="page-history" class="featurepage"><div class="featurehead"><h2>ประวัติการใช้งาน</h2><button class="smallbtn" id="clearHistory">ล้างประวัติ</button></div><div id="historyList" class="cards"></div></section>
+<section id="page-profile" class="featurepage"><div class="featurehead"><h2>โปรไฟล์และการตั้งค่า</h2></div><section class="panel"><div class="controls"><label for="profileName">ชื่อที่แสดงในอุปกรณ์นี้</label><input id="profileName" style="width:100%;padding:12px;border:1px solid #393d45;border-radius:10px;background:#08090b;color:white" placeholder="ชื่อของคุณ"><div class="control"><div class="labelrow"><label for="language">ภาษา</label></div><select id="language" style="width:100%;padding:12px;border-radius:10px;background:#08090b;color:white;border:1px solid #393d45"><option value="th">ไทย</option><option value="en">English (basic)</option></select></div><button class="btn primary" id="saveProfile">บันทึกโปรไฟล์</button><p class="notice">โปรไฟล์นี้เป็นข้อมูลในเครื่อง ไม่ใช่บัญชีออนไลน์ และไม่สามารถซิงก์ข้ามอุปกรณ์ได้ หากต้องการสมัครสมาชิกจริงและจัดเก็บรูปบนเซิร์ฟเวอร์ ต้องเชื่อมต่อ Backend และฐานข้อมูล</p></div></section></section>
+<footer class="footer"><span>SNOWFX STUDIO © <span id="year"></span></span><span>MADE FOR YOUR MOMENTS · KEEP IT CINEMATIC</span></footer>
+</div>
+<button class="adminfloat" id="openAdmin">⚙ ADMIN PANEL</button>
+<div class="modalback" id="adminModal" role="dialog" aria-modal="true" aria-labelledby="adminTitle"><div class="modal"><h2 id="adminTitle">SNOWFX · Admin Panel</h2><div id="adminLogin"><p class="muted">เข้าสู่แผงควบคุมบนอุปกรณ์นี้</p><label for="adminPin">รหัสแอดมิน</label><input id="adminPin" type="password" inputmode="numeric" placeholder="รหัสผ่าน"><div class="modalactions"><button class="smallbtn" id="closeAdmin">ปิด</button><button class="btn primary" id="loginAdmin">เข้าสู่ระบบ</button></div><p class="notice">ข้อจำกัด: เว็บไซต์แบบ Static ไม่มีระบบยืนยันตัวตนฝั่งเซิร์ฟเวอร์ รหัสนี้เป็นเพียงการล็อกหน้าจอในเบราว์เซอร์ ไม่ควรใช้ปกป้องข้อมูลลับ</p></div><div id="adminDashboard" hidden><div class="statgrid"><div class="statbox"><strong id="statVisits">0</strong><span>เปิดใช้งานบนเครื่องนี้ (Local)</span></div><div class="statbox"><strong id="statProjects">0</strong><span>โปรเจกต์</span></div><div class="statbox"><strong id="statHistory">0</strong><span>รายการประวัติ</span></div></div><label for="newAdminPin">เปลี่ยนรหัสแผงควบคุม</label><input id="newAdminPin" type="password" inputmode="numeric" placeholder="รหัสใหม่อย่างน้อย 4 ตัว"><div class="modalactions"><button class="smallbtn" id="exportData">ส่งออกข้อมูล JSON</button><button class="smallbtn" id="resetLocal">ล้างข้อมูลในเครื่อง</button><button class="btn primary" id="changePin">บันทึกรหัสใหม่</button><button class="smallbtn" id="logoutAdmin">ออกจากระบบ</button></div><p class="notice">TEST MODE: สถิตินี้เก็บเฉพาะเบราว์เซอร์นี้ ไม่ใช่ยอดผู้เข้าชมจริง และยังไม่ได้เชื่อมระบบออนไลน์</p></div></div></div>
+<script>
+(()=> {
+'use strict';
+const $=id=>document.getElementById(id), canvas=$('canvas'), ctx=canvas.getContext('2d',{alpha:false,desynchronized:true});
+const file=$('file'), count=$('count'), speed=$('speed'), size=$('size'), status=$('status');
+let img=null, flakes=[], last=0, fpsLast=0, frames=0, sparkle=true, glow=false, recording=false, lastWebm=null, ffmpegInstance=null, ffmpegLoading=null, convertedMp4=null, ffmpegWorkerURLs=[];
+const DB={get(k,d){try{return JSON.parse(localStorage.getItem('snowfx_'+k))??d}catch{return d}},set(k,v){try{localStorage.setItem('snowfx_'+k,JSON.stringify(v));return true}catch{return false}},del(k){try{localStorage.removeItem('snowfx_'+k)}catch{}}};
+let visitCount=DB.get('visits',0)+1;DB.set('visits',visitCount);let projects=DB.get('projects',[]),history=DB.get('history',[]),profile=DB.get('profile',{name:'',language:'th'}),adminPin=DB.get('adminPin','2468');
+$('year').textContent=new Date().getFullYear();
+function seed(){flakes=[];if(!img)return;for(let i=0;i<+count.value;i++)flakes.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:(.55+Math.random()*1.35)*(+size.value/5),v:.4+Math.random()*1.1,dx:(Math.random()-.5)*.35,a:.3+Math.random()*.62,p:Math.random()*6.28})}
+function setCanvas(){if(!img)return;const maxW=720,maxH=1280,scale=Math.min(maxW/img.naturalWidth,maxH/img.naturalHeight,1);canvas.width=Math.max(1,Math.round(img.naturalWidth*scale));canvas.height=Math.max(1,Math.round(img.naturalHeight*scale));canvas.hidden=false;$('empty').hidden=true;seed();$('saveImage').disabled=false;$('saveVideo').disabled=false;$('saveProject').disabled=false;$('saveMp4').disabled=!lastWebm;status.textContent='รูปพร้อมแล้ว — เอฟเฟกต์ทำงานในเบราว์เซอร์นี้';last=0}
+file.addEventListener('change',()=>{const f=file.files&&file.files[0];if(!f)return;if(!f.type.startsWith('image/')){status.textContent='กรุณาเลือกไฟล์รูปภาพ';return}const u=URL.createObjectURL(f),im=new Image();im.onload=()=>{img=im;setCanvas();URL.revokeObjectURL(u)};im.onerror=()=>{status.textContent='เปิดรูปไม่ได้ ลองใช้ JPG หรือ PNG';URL.revokeObjectURL(u)};im.src=u});
+function render(t){requestAnimationFrame(render);if(!img||recording&&window.__snowfxPauseRender)return;const dt=Math.min(2.5,(t-(last||t))/16.67);last=t;ctx.drawImage(img,0,0,canvas.width,canvas.height);const sp=+speed.value/10;for(const f of flakes){f.y+=f.v*sp*dt;f.x+=f.dx*dt;if(f.y>canvas.height+5){f.y=-5;f.x=Math.random()*canvas.width}if(f.x<-4)f.x=canvas.width+4;if(f.x>canvas.width+4)f.x=-4;ctx.beginPath();ctx.fillStyle=`rgba(255,255,255,${f.a})`;ctx.arc(f.x,f.y,f.r,0,6.283);ctx.fill();if(glow&&f.r>1.1){ctx.beginPath();ctx.fillStyle=`rgba(255,255,255,${f.a*.1})`;ctx.arc(f.x,f.y,f.r*2,0,6.283);ctx.fill()}}if(sparkle){for(let i=0;i<8;i++){const x=(i*197+71)%canvas.width,y=(i*283+91)%canvas.height,p=(Math.sin(t*.0015+i*1.9)+1)/2,a=p*.5,s=1+p*1.7;if(a>.12){ctx.strokeStyle=`rgba(255,255,255,${a})`;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x-s*2,y);ctx.lineTo(x+s*2,y);ctx.moveTo(x,y-s*2);ctx.lineTo(x,y+s*2);ctx.stroke()}}}frames++;if(t-fpsLast>1000){$('fps').textContent=`LIVE · ~${frames} FPS`;frames=0;fpsLast=t}}
+requestAnimationFrame(render);
+count.addEventListener('input',()=>{$('countOut').textContent=count.value+' flakes';seed()});speed.addEventListener('input',()=>{$('speedOut').textContent=(+speed.value/10).toFixed(1)+'×'});size.addEventListener('input',()=>{$('sizeOut').textContent=+size.value<4?'Small':+size.value<8?'Medium':'Large';seed()});
+$('sparkleToggle').addEventListener('click',e=>{sparkle=!sparkle;e.currentTarget.setAttribute('aria-pressed',String(sparkle))});$('glowToggle').addEventListener('click',e=>{glow=!glow;e.currentTarget.setAttribute('aria-pressed',String(glow))});
+function downloadBlob(blob,name){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),15000)}
+$('saveImage').addEventListener('click',()=>{if(!img)return;canvas.toBlob(b=>{if(b){downloadBlob(b,'snowfx-photo.png');logAction('image','snowfx-photo.png')}else status.textContent='บันทึกรูปไม่สำเร็จ'},'image/png')});
+$('saveVideo').addEventListener('click',()=>{if(!img||recording)return;if(!canvas.captureStream||!window.MediaRecorder){status.textContent='เบราว์เซอร์นี้ยังบันทึกวิดีโอไม่ได้ ลอง Chrome เวอร์ชันล่าสุด';return}const recordCanvas=document.createElement('canvas');const recordScale=Math.min(1,720/canvas.width,1280/canvas.height);recordCanvas.width=Math.max(2,Math.round(canvas.width*recordScale/2)*2);recordCanvas.height=Math.max(2,Math.round(canvas.height*recordScale/2)*2);const recordCtx=recordCanvas.getContext('2d');let recordAnim=0;const drawRecordFrame=()=>{if(!recording)return;recordCtx.drawImage(canvas,0,0,recordCanvas.width,recordCanvas.height);recordAnim=requestAnimationFrame(drawRecordFrame)};recording=true;drawRecordFrame();const stream=recordCanvas.captureStream(20),types=['video/webm;codecs=vp8','video/webm;codecs=vp9','video/webm'];const mime=types.find(x=>MediaRecorder.isTypeSupported(x))||'';let rec;try{rec=new MediaRecorder(stream,mime?{mimeType:mime,videoBitsPerSecond:1400000}:{videoBitsPerSecond:1400000})}catch(e){status.textContent='เริ่มบันทึกไม่ได้บนเบราว์เซอร์นี้';stream.getTracks().forEach(t=>t.stop());return}const chunks=[];rec.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};rec.onerror=()=>{stream.getTracks().forEach(t=>t.stop());cancelAnimationFrame(recordAnim);recording=false;$('saveVideo').disabled=false;status.textContent='เกิดข้อผิดพลาดขณะบันทึกวิดีโอ'};rec.onstop=async()=>{const b=new Blob(chunks,{type:rec.mimeType||'video/webm'});lastWebm=b;convertedMp4=null;stream.getTracks().forEach(t=>t.stop());recording=false;$('saveVideo').disabled=false;$('saveVideo').textContent='บันทึกวิดีโอ 15 วิ';$('saveMp4').disabled=false;logAction('video','recorded 15s');status.textContent='อัดเสร็จแล้ว — กำลังส่งไปแปลง MP4 ใน Termux…';try{await convertToMp4(b,true)}catch(e){console.error(e);status.textContent='ส่งไปแปลงไม่สำเร็จ: '+(e?.message||String(e))+' — ตรวจว่า Termux เปิดเซิร์ฟเวอร์อยู่ แล้วลองกด “แปลงเป็น MP4” อีกครั้ง'}};recording=true;$('saveVideo').disabled=true;$('saveVideo').textContent='กำลังบันทึก…';status.textContent='กำลังบันทึก 15 วินาที กรุณาอยู่หน้าเว็บและอย่าดับหน้าจอ';rec.start(250);setTimeout(()=>{if(rec.state==='recording')rec.stop()},15000)});
+async function fetchFirst(urls){let errors=[];for(const url of urls){try{const r=await fetch(url,{mode:'cors',cache:'force-cache'});if(!r.ok)throw new Error('HTTP '+r.status);return await r.blob()}catch(e){errors.push(url+' — '+(e.message||e))}}throw new Error(errors.join(' | '))}
+async function blobUrlFrom(urls,type){const b=await fetchFirst(urls);return URL.createObjectURL(new Blob([b],{type}))}
+async function getFFmpeg(){if(ffmpegInstance)return ffmpegInstance;if(ffmpegLoading)return ffmpegLoading;ffmpegLoading=(async()=>{status.textContent='กำลังโหลดตัวแปลง MP4 (ครั้งแรกอาจใช้เวลาสักครู่)…';let importError;let FFmpegClass;for(const src of ['https://esm.sh/@ffmpeg/ffmpeg@0.12.15','https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.15/dist/esm/index.js','https://unpkg.com/@ffmpeg/ffmpeg@0.12.15/dist/esm/index.js']){try{const mod=await import(src);FFmpegClass=mod.FFmpeg;if(FFmpegClass)break;throw new Error('ไม่พบ FFmpeg class')}catch(e){importError=e}}if(!FFmpegClass)throw new Error('โหลดไลบรารี FFmpeg ไม่สำเร็จ: '+(importError?.message||'CDN ใช้งานไม่ได้'));
+const ff=new FFmpegClass();ff.on('log',({message})=>{if(message&&/error/i.test(message))console.warn('[FFmpeg]',message)});ff.on('progress',({progress})=>{if(Number.isFinite(progress))status.textContent='กำลังแปลง MP4… '+Math.max(0,Math.min(100,Math.round(progress*100)))+'% — อย่าปิดหน้านี้'});
+const base='@ffmpeg/core@0.12.10/dist/umd/ffmpeg-core';const roots=['https://cdn.jsdelivr.net/npm/'+base,'https://unpkg.com/'+base];let coreURL,wasmURL;try{coreURL=await blobUrlFrom(roots.map(x=>x+'.js'),'text/javascript');wasmURL=await blobUrlFrom(roots.map(x=>x+'.wasm'),'application/wasm')}catch(e){throw new Error('โหลด FFmpeg core/wasm ไม่สำเร็จจาก CDN สำรอง: '+e.message)}
+let workerURL=null,workerConstURL=null,workerErrorsURL=null;try{const workerRoot='https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.15/dist/esm/';const [workerRes,constRes,errorsRes]=await Promise.all([fetch(workerRoot+'worker.js',{mode:'cors',cache:'force-cache'}),fetch(workerRoot+'const.js',{mode:'cors',cache:'force-cache'}),fetch(workerRoot+'errors.js',{mode:'cors',cache:'force-cache'})]);if(!workerRes.ok||!constRes.ok||!errorsRes.ok)throw new Error('โหลดไฟล์ Worker ไม่สำเร็จ');const constText=await constRes.text(),errorsText=await errorsRes.text();workerConstURL=URL.createObjectURL(new Blob([constText],{type:'text/javascript'}));workerErrorsURL=URL.createObjectURL(new Blob([errorsText],{type:'text/javascript'}));let workerText=await workerRes.text();workerText=workerText.replaceAll('./const.js',workerConstURL).replaceAll('./errors.js',workerErrorsURL);workerURL=URL.createObjectURL(new Blob([workerText],{type:'text/javascript'}));await ff.load({coreURL,wasmURL,classWorkerURL:workerURL})}finally{URL.revokeObjectURL(coreURL);URL.revokeObjectURL(wasmURL)}ffmpegInstance=ff;ffmpegWorkerURLs=[workerURL,workerConstURL,workerErrorsURL].filter(Boolean);return ff})();try{return await ffmpegLoading}catch(e){ffmpegLoading=null;throw e}}
+async function convertToMp4(sourceBlob,automatic=false){if(!sourceBlob)throw new Error('ไม่พบวิดีโอสำหรับแปลง');const btn=$('saveMp4'),old=btn.textContent;btn.disabled=true;btn.textContent='กำลังส่งให้ Termux…';try{status.textContent='กำลังส่งวิดีโอไป Termux เพื่อแปลงเป็น MP4…';const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),180000);let response;try{response=await fetch('http://127.0.0.1:8787/convert',{method:'POST',headers:{'Content-Type':'application/octet-stream','X-File-Name':'snowfx-cinematic.webm'},body:sourceBlob,signal:controller.signal,cache:'no-store'})}finally{clearTimeout(timeout)}if(!response.ok){let detail='HTTP '+response.status;try{detail=await response.text()||detail}catch{}throw new Error('Termux ตอบกลับไม่สำเร็จ: '+detail)}const type=response.headers.get('content-type')||'';if(!type.includes('video/mp4')&&!type.includes('application/octet-stream')){const detail=await response.text();throw new Error(detail||'ไฟล์ที่ส่งกลับมาไม่ใช่ MP4')}convertedMp4=await response.blob();if(!convertedMp4.size)throw new Error('ไฟล์ MP4 ว่างเปล่า');downloadBlob(convertedMp4,'snowfx-cinematic.mp4');logAction('mp4','snowfx-cinematic.mp4');status.textContent='แปลง MP4 ด้วย Termux สำเร็จแล้ว ✓ กำลังดาวน์โหลดไฟล์';return true}catch(e){console.error(e);const message=e.name==='AbortError'?'หมดเวลารอ Termux แปลงไฟล์':(e.message||String(e));if(!automatic)status.textContent='แปลง MP4 ไม่สำเร็จ: '+message+' — ตรวจว่า Termux เปิดเซิร์ฟเวอร์อยู่';throw new Error(message)}finally{btn.disabled=!lastWebm;btn.textContent=old}}$('saveMp4').addEventListener('click',async()=>{if(!lastWebm){status.textContent='กรุณาบันทึกวิดีโอก่อน';return}try{await convertToMp4(lastWebm,false)}catch(e){status.textContent='แปลง MP4 ไม่สำเร็จ: '+(e?.message||String(e))+' — ตรวจว่า Termux เปิดเซิร์ฟเวอร์อยู่'}});
+function saveHistory(){history=history.slice(0,100);DB.set('history',history);renderHistory()}
+function logAction(type,name){history.unshift({type,name,time:new Date().toISOString()});saveHistory()}
+function makeCard(title,detail,actions){const card=document.createElement('article');card.className='savedcard';const h=document.createElement('h3');h.textContent=title;card.append(h);const p=document.createElement('p');p.textContent=detail;card.append(p);const a=document.createElement('div');a.className='cardactions';actions.forEach(([label,fn])=>{const b=document.createElement('button');b.textContent=label;b.addEventListener('click',fn);a.append(b)});card.append(a);return card}
+function renderProjects(){const el=$('projectsList');el.replaceChildren();if(!projects.length){el.innerHTML='<div class="emptylist">ยังไม่มีโปรเจกต์ที่บันทึกไว้</div>';return}projects.forEach((p,i)=>el.append(makeCard(p.name||'โปรเจกต์ '+(i+1),new Date(p.time).toLocaleString('th-TH'),[['โหลดการตั้งค่า',()=>{count.value=p.count||55;speed.value=p.speed||10;size.value=p.size||5;sparkle=p.sparkle!==false;glow=!!p.glow;$('sparkleToggle').setAttribute('aria-pressed',String(sparkle));$('glowToggle').setAttribute('aria-pressed',String(glow));count.dispatchEvent(new Event('input'));speed.dispatchEvent(new Event('input'));size.dispatchEvent(new Event('input'));status.textContent='โหลดการตั้งค่าโปรเจกต์แล้ว — เลือกรูปเดิมอีกครั้งหากยังไม่มีภาพ';document.querySelector('[data-page="studio"]').click()}],['ลบ',()=>{projects.splice(i,1);DB.set('projects',projects);renderProjects()}]])))}
+function renderHistory(){const el=$('historyList');if(!el)return;el.replaceChildren();if(!history.length){el.innerHTML='<div class="emptylist">ยังไม่มีประวัติการใช้งาน</div>';return}history.forEach((h,i)=>el.append(makeCard((h.type||'action').toUpperCase()+' · '+(h.name||''),h.time?new Date(h.time).toLocaleString('th-TH'):'', [['ลบ',()=>{history.splice(i,1);DB.set('history',history);renderHistory()}]])))}
+$('saveProject').addEventListener('click',()=>{const name=prompt('ตั้งชื่อโปรเจกต์','Snow mood '+new Date().toLocaleDateString('th-TH'));if(name===null)return;projects.unshift({name:name.trim()||'Untitled',count:+count.value,speed:+speed.value,size:+size.value,sparkle,glow,time:new Date().toISOString()});projects=projects.slice(0,50);if(!DB.set('projects',projects)){status.textContent='พื้นที่จัดเก็บเต็ม ลองลบโปรเจกต์เก่าก่อน';return}renderProjects();status.textContent='บันทึกโปรเจกต์แล้ว';logAction('project',name||'Untitled')});
+$('refreshProjects').addEventListener('click',renderProjects);$('clearHistory').addEventListener('click',()=>{if(confirm('ล้างประวัติทั้งหมดในอุปกรณ์นี้หรือไม่?')){history=[];DB.set('history',history);renderHistory()}});
+$('profileName').value=profile.name||'';$('language').value=profile.language||'th';$('saveProfile').addEventListener('click',()=>{profile={name:$('profileName').value.trim(),language:$('language').value};DB.set('profile',profile);alert('บันทึกโปรไฟล์ในอุปกรณ์นี้แล้ว')});
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.navbtn').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.featurepage').forEach(x=>x.classList.toggle('active',x.id==='page-'+b.dataset.page));if(b.dataset.page==='projects')renderProjects();if(b.dataset.page==='history')renderHistory()}));
+function updateStats(){$('statVisits').textContent=DB.get('visits',0);$('statProjects').textContent=projects.length;$('statHistory').textContent=history.length}
+$('openAdmin').addEventListener('click',()=>{$('adminModal').classList.add('open');$('adminPin').value='';$('adminLogin').hidden=false;$('adminDashboard').hidden=true});$('closeAdmin').addEventListener('click',()=>$('adminModal').classList.remove('open'));$('adminModal').addEventListener('click',e=>{if(e.target===$('adminModal'))$('adminModal').classList.remove('open')});
+$('loginAdmin').addEventListener('click',()=>{if($('adminPin').value===adminPin){$('adminLogin').hidden=true;$('adminDashboard').hidden=false;updateStats()}else alert('รหัสแอดมินไม่ถูกต้อง')});$('logoutAdmin').addEventListener('click',()=>{$('adminDashboard').hidden=true;$('adminLogin').hidden=false;$('adminPin').value='';$('newAdminPin').value=''});
+$('changePin').addEventListener('click',()=>{const v=$('newAdminPin').value;if(v.length<4){alert('รหัสใหม่ต้องมีอย่างน้อย 4 ตัว');return}adminPin=v;DB.set('adminPin',adminPin);$('newAdminPin').value='';alert('เปลี่ยนรหัสแล้ว')});
+$('exportData').addEventListener('click',()=>downloadBlob(new Blob([JSON.stringify({projects,history,profile,visitCount},null,2)],{type:'application/json'}),'snowfx-data.json'));
+$('resetLocal').addEventListener('click',()=>{if(!confirm('ล้างโปรเจกต์ ประวัติ และโปรไฟล์ในเครื่องนี้ทั้งหมดหรือไม่?'))return;projects=[];history=[];profile={name:'',language:'th'};DB.set('projects',projects);DB.set('history',history);DB.set('profile',profile);$('profileName').value='';$('language').value='th';renderProjects();renderHistory();updateStats();alert('ล้างข้อมูลในเครื่องแล้ว')});
+renderProjects();renderHistory();
+
+// TEST MODE ONLY: simulated visitor metrics. No real visitor data is collected.
+const demoOnline=$('onlineCount'),demoVisitors=$('visitorCount');
+let demoOnlineValue=8,demoVisitorValue=186;
+function tickDemoStats(){
+  demoOnlineValue=Math.max(1,Math.min(34,demoOnlineValue+Math.floor(Math.random()*5)-2));
+  demoVisitorValue+=Math.random()<.45?0:(Math.random()<.85?1:2);
+  if(demoOnline)demoOnline.textContent=String(demoOnlineValue);
+  if(demoVisitors)demoVisitors.textContent=String(demoVisitorValue);
+}
+setInterval(tickDemoStats,5000);
+
+})();
+</script>
+</body>
+</html>
